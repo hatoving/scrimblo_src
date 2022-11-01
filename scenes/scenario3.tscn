@@ -1,0 +1,99 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://code/scenes/scenarioAE.gd" type="Script" id=1]
+[ext_resource path="res://sprites/section3/sc3_ludwig.png" type="Texture" id=2]
+[ext_resource path="res://sprites/section3/sc3_mark.png" type="Texture" id=3]
+[ext_resource path="res://audio/sfx/select.wav" type="AudioStream" id=4]
+[ext_resource path="res://fonts/SwanseaBoldItalic-p3Dv.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://audio/voice lines/scenario3/scenario03_vl_01.wav" type="AudioStream" id=6]
+[ext_resource path="res://sprites/section3/sc3_town.jpg" type="Texture" id=7]
+
+[sub_resource type="DynamicFont" id=2]
+size = 28
+extra_spacing_bottom = 13
+font_data = ExtResource( 5 )
+
+[sub_resource type="StyleBoxEmpty" id=5]
+
+[sub_resource type="StyleBoxEmpty" id=6]
+
+[sub_resource type="StyleBoxEmpty" id=7]
+
+[sub_resource type="StyleBoxEmpty" id=4]
+
+[node name="Root" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Voice" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+autoplay = true
+
+[node name="Timer" type="Timer" parent="."]
+
+[node name="BG" type="ColorRect" parent="."]
+margin_right = 640.0
+margin_bottom = 480.0
+rect_pivot_offset = Vector2( 320, 240 )
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
+
+[node name="Label" type="Label" parent="BG"]
+visible = false
+margin_left = 131.0
+margin_top = 62.0
+margin_right = 508.0
+margin_bottom = 132.0
+custom_fonts/font = SubResource( 2 )
+text = "SCRIMBLO BIMBLOR
+COUNTY"
+align = 1
+valign = 1
+
+[node name="Image" type="Sprite" parent="BG"]
+visible = false
+position = Vector2( 320, 275 )
+scale = Vector2( 0.4, 0.4 )
+texture = ExtResource( 7 )
+
+[node name="Faces" type="Node2D" parent="BG"]
+
+[node name="Face01" type="Sprite" parent="BG/Faces"]
+visible = false
+position = Vector2( 173, 319 )
+scale = Vector2( 0.412281, 0.412281 )
+texture = ExtResource( 3 )
+offset = Vector2( 2.42551, -21.8298 )
+
+[node name="Button" type="Button" parent="BG/Faces/Face01"]
+margin_left = -245.0
+margin_top = -250.0
+margin_right = 252.0
+margin_bottom = 209.0
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/focus = SubResource( 7 )
+custom_styles/normal = SubResource( 4 )
+
+[node name="Face02" type="Sprite" parent="BG/Faces"]
+visible = false
+position = Vector2( 462, 316 )
+scale = Vector2( 0.412281, 0.412281 )
+texture = ExtResource( 2 )
+offset = Vector2( -2.42551, -14.5532 )
+
+[node name="Button" type="Button" parent="BG/Faces/Face02"]
+margin_left = -249.83
+margin_top = -242.553
+margin_right = 247.17
+margin_bottom = 216.447
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = SubResource( 6 )
+custom_styles/focus = SubResource( 7 )
+custom_styles/normal = SubResource( 4 )
+
+[node name="SFX" type="AudioStreamPlayer" parent="BG/Faces"]
+stream = ExtResource( 4 )
+
+[connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="pressed" from="BG/Faces/Face01/Button" to="." method="_on_RightFace_pressed"]
+[connection signal="pressed" from="BG/Faces/Face02/Button" to="." method="_on_LeftFace_pressed"]

@@ -1,0 +1,41 @@
+[gd_resource type="Shader" format=2]
+
+[resource]
+code = "shader_type canvas_item;
+
+uniform int zoom;
+uniform int pDir;
+uniform int noWrap;
+
+void fragment() {
+	float fB;
+	float fC;
+	
+	float fPixelWidth = SCREEN_PIXEL_SIZE.x;
+	float fPixelHeight = SCREEN_PIXEL_SIZE.y;
+	
+	vec2 posTex;
+	vec4 color = vec4(0.0, 0.0, 0.0, 1.0);
+	
+	if (pDir == 0) {
+		fB = 1.0 - (float(zoom) * fPixelHeight);
+		fC = max(0.02, 1.0 + (fB - 1.0) * 4.0 * pow((UV.x - 0.5), 2.0));
+		
+		posTex = UV * vec2(1.0, fC) + vec2(0.0, (1.0 - fC) / 2.0);
+		
+		if (noWrap == 0 || (posTex.y >= 0.0 && posTex.y <= 1.0)) {
+			color = texture(TEXTURE, posTex);
+		}
+	} else {
+		fB = 1.0 - (float(zoom) * fPixelWidth);
+		fC = max(0.05, 1.0 + (fB - 1.0) * 4.0 * pow((UV.y - 0.5), 2.0));
+		
+		posTex = UV * vec2(fC, 1.0) + vec2((1.0 - fC) / 2.0, 0.0);
+		
+		if (noWrap == 0 || (posTex.x >= 0.0 && posTex.x <= 1.0)) {
+			color = texture(TEXTURE, posTex);
+		}
+	}
+	
+	COLOR = color;
+}"

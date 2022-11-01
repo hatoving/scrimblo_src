@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/sc6_vl_bad.wav-20b449458bfd27e8814d5ca54c57ccae.sample"
+
+[deps]
+
+source_file="res://audio/voice lines/scenario6/sc6_vl_bad.wav"
+dest_files=[ "res://.import/sc6_vl_bad.wav-20b449458bfd27e8814d5ca54c57ccae.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

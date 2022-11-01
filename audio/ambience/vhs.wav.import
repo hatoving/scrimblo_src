@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/vhs.wav-9fefcbb5a5d50887c14cdb91a0796d97.sample"
+
+[deps]
+
+source_file="res://audio/ambience/vhs.wav"
+dest_files=[ "res://.import/vhs.wav-9fefcbb5a5d50887c14cdb91a0796d97.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=2
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0
